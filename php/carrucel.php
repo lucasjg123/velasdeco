@@ -6,8 +6,8 @@ $src; // varusada en el for para almacenar temporalmente la direc de las imagene
 for ($i = 1; $i < $cant_img+1; $i++) { 
     $src = "img/carrusel/" + $i + ".jpeg"; ?>
 
-    <div class="carousel-item <?php if($i == 1) echo 'active';?>">
-        <img src="<?php echo $src; ?>" class="d-block w-100" alt="..." />
+    <div class="carousel-item h-100 <?php if($i == 1) echo 'active';?>">
+        <img src="<?php echo $src; ?>" class="d-block w-100 h-100" alt="..." />
     </div>
 <?php } ?>
 
