@@ -1,3 +1,9 @@
+<?php 
+require_once 'php/carrucel.php'
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
   <head>
@@ -134,27 +140,7 @@
         >
           <!-- CUANDO LO HAGA .PHP REQUERIR CARRUCEL.PHP -->
           <div class="carousel-inner h-100">
-            <div class="carousel-item h-100 active">
-              <img
-                src="img/carrusel/1.jpeg"
-                class="d-block w-100 h-100"
-                alt="..."
-              />
-            </div>
-            <div class="carousel-item h-100">
-              <img
-                src="img/carrusel/2.jpeg"
-                class="d-block w-100 h-100"
-                alt="..."
-              />
-            </div>
-            <div class="carousel-item h-100">
-              <img
-                src="img/carrusel/3.jpeg"
-                class="d-block w-100 h-100"
-                alt="..."
-              />
-            </div>
+            <?php CargarImagenes() ?>
           </div>
           <button
             class="carousel-control-prev"
