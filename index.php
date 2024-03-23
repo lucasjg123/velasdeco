@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="author" content="Lucas Godoy" />
-    <meta name="description" content="text descripcion" />
-    <meta name="keywords" content="palabras, clave, separadar, por coma" />
+    <meta name="description" content="Venta de velas aromaticas cba" />
+    <meta name="keywords" content="velas, deco, velasdeco" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link
