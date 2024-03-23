@@ -17,7 +17,7 @@
   --textarea-borde: var(--firma-autor);
   --textarea-focus: #a1a1a159;
   --relleno: var(--color-primario);
-  --fondo-imagen: url(./img/fondos/night1.jpg);
+  --fondo-imagen: url(../img/fondos/night1.jpg);
   --brillo-img-carousel: brightness(80%);
   --arrow: var(--firma-autor);
 }
@@ -33,7 +33,7 @@
   --textarea-borde: #237e6982;
   --textarea-focus: rgba(35, 126, 105, 0.25);
   --relleno: #d4f3e94d;
-  --fondo-imagen: url(./img/fondos/light.jpg);
+  --fondo-imagen: url(../img/fondos/light.jpg);
   --brillo-img-carousel: brightness(100%);
   --arrow: var(--borde);
 
