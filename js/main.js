@@ -1,42 +1,43 @@
 let pag = 1; // Indica en q pagina me encuentro
 let limite = 0;
-let cantComent;
-let cantComent_mostrar = 3; // Esta variable debe ajustarse deacuerdo al alto de la pantalla de cada celular
-let cantPaginas;
+const cantComent_mostrar = 3;
 
 // Establece la cant de paginas de comentarios a mostrar
-function InicializarVariables(countComments) {
-  cantPaginas = parseInt(countComments / cantComent_mostrar);
+function CalcularCantPaginas(countComments) {
+  // cantidad de paginas a mostrar
+  let cantPaginas = parseInt(countComments / cantComent_mostrar);
 
   // si queda un resto de la div, agrego una pagina mas
   if (countComments % cantComent_mostrar != 0) cantPaginas++;
 
   console.log("Cantidad de comentarios:", countComments);
   console.log("Cantidad de paginas a mostrar:", cantPaginas);
+
+  return cantPaginas;
 }
 
 // Se activa si el usuario quiere ver comentarios previos o siguentes
 function HUB_EventoPagina(sig) {
   // recibe un bool de param q indica si se presiono prev o sig
-  let valido = false;
 
+  // Pagina sig
   if (sig) {
-    // Si es sig y pag es != al LIMITE SUPERIOR, no estamos en la ult pagina x ende hay una mas
-    if (pag != cantPaginas) {
+    // Si es sig y pag es < al LIMITE SUPERIOR(cant pag), no estamos en la ult pagina x ende hay una mas
+    if (pag < cantPaginas) {
       pag++; // aumento la pag en 1
       limite += 3; // le sumo 4 al limite
-      valido = true; // esta autorizado
-    }
-  } else {
-    if (pag != 1) {
-      // si pag es != 0(LIMITE INFERIOR), no estamos en la 1er pagina x ende hay una previa
-      pag--; // resto 1 pagina
-      limite -= 3; //le restamos 4 al limite
-      valido = true; // esta autorizado
+      ConexionFetchPOST();
     }
   }
-
-  if (valido) ConexionFetchPOST();
+  // pagina anterior
+  else {
+    if (pag > 1) {
+      // si pag es > 1(LIMITE INFERIOR), no estamos en la 1er pagina x ende hay una previa
+      pag--; // disminuyo 1 pagina
+      limite -= 3; //le restamos 4 al limite
+      ConexionFetchPOST();
+    }
+  }
 
   console.log("Mostramos la pagina:", pag);
   console.log("Limite actual:", limite);
@@ -88,7 +89,8 @@ function actualizarHTML(array) {
   }
 }
 
-InicializarVariables(countCommentsJS);
+// ----- MAIN -------
+const cantPaginas = CalcularCantPaginas(countCommentsJS);
 console.log("Cantidad de comentarios desde PHP:", countCommentsJS);
 
 // HUB: objetivo final: mostrar en la pagina los comentarios del array
