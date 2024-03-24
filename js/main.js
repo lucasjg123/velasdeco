@@ -16,26 +16,27 @@ function CalcularCantPaginas(countComments) {
 }
 
 // Se activa si el usuario quiere ver comentarios previos o siguentes
-function HUB_EventoPagina(sig) {
+function PaginaSigPrev(sig) {
   // recibe un bool de param q indica si se presiono prev o sig
 
   // Pagina sig y pag es < al LIMITE SUPERIOR(cant pag), no estamos en la ult pagina x ende hay una mas
   if (sig) {
     if (actualPage < cantPaginas) {
       actualPage++; // aumento la pag en 1
-      ConexionFetchPOST();
+      RequestComments();
     }
   }
   // pagina anterior y pag es > 1(LIMITE INFERIOR), no estamos en la 1er pagina x ende hay una previa
   else if (actualPage > 1) {
     actualPage--; // disminuyo 1 pagina
-    ConexionFetchPOST();
+    RequestComments();
   }
 
-  console.log("Mostramos la actualPageina:", actualPage);
+  console.log("Mostramos la actualPagina:", actualPage);
 }
 
-function ConexionFetchPOST() {
+// realiza la peticion post a selectComments.php para solicitar comentarios
+function RequestComments() {
   const url = "php/funciones/selectComments.php";
 
   // Objeto donde guardo los datos a enviar a php
@@ -61,7 +62,7 @@ function ConexionFetchPOST() {
     .then((data) => {
       // Aca recibimos el res.json(). Los datos recibimos en formato legible por JS
       console.log(data);
-      actualizarHTML(data);
+      updateComments(data);
     })
     .catch((error) => {
       //En este bloque catch manejamos el error si es q se produce con "throw new Error"
@@ -70,14 +71,14 @@ function ConexionFetchPOST() {
 }
 
 // actualizamos los comentarios de la pag
-function actualizarHTML(array) {
-  let e;
+function updateComments(comments) {
+  let e; // var temporal para almacenar el elemento html de cada comentario
 
   // LLenamos los div p con los nuevos comentarios
   for (let i = 0; i < cantComent_mostrar; i++) {
     e = document.getElementById("comment" + (i + 1));
 
-    array[i] != null ? (e.innerHTML = array[i]) : (e.innerHTML = "");
+    comments[i] != null ? (e.innerHTML = comments[i]) : (e.innerHTML = "");
   }
 }
 
@@ -89,11 +90,11 @@ console.log("Cantidad de comentarios desde PHP:", countCommentsJS);
 
 //Evento de click
 document.getElementById("prev").addEventListener("click", () => {
-  HUB_EventoPagina(false);
+  PaginaSigPrev(false);
 });
 
 document.getElementById("sig").addEventListener("click", () => {
-  HUB_EventoPagina(true);
+  PaginaSigPrev(true);
 });
 
 // del codigo

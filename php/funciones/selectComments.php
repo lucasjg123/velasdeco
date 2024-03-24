@@ -2,15 +2,15 @@
 require_once "conexion.php";
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $dataJS = json_decode(file_get_contents("php://input"), true); // 
+    $dataJS = json_decode(file_get_contents("php://input"), true); 
     /*
         file_get_contents("php://input"), true) Lee el cuerpo de la solicitud, es decir los datos q le enviamos dsd el fetch
         json_decode() transforma el formato json en el cual esta el obj q mandamos con fetch a arrayPHP
     */
-    $limite = $dataJS["page"];
+    $page = $dataJS["page"];
     $conexion = ConexionBD(); // busco la conexion
 
-    $lista = selectComments($conexion, $limite);
+    $lista = selectComments($conexion, $page);
 
     echo json_encode($lista);
 }
@@ -36,3 +36,4 @@ function selectComments($vConexion, $page=1){
         
 }
 
+?>

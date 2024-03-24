@@ -5,10 +5,8 @@ function ConexionBD($Host = 'localhost',  $User = 'root',  $Password = '', $Base
     //procedo al intento de conexion con esos parametros
     $linkConexion = mysqli_connect($Host, $User, $Password, $BaseDeDatos);
     mysqli_set_charset($linkConexion, "utf8");
-    if ($linkConexion!=false) 
-        return $linkConexion;
-    else 
-        die ('No se pudo establecer la conexión.');
+    
+    return ($linkConexion) ? $linkConexion : die('No se pudo establecer la conexión.');
 
 }
 ?>
