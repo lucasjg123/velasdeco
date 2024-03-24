@@ -232,7 +232,7 @@ mysqli_close($MiConexion);
               </li>
               <li class="d-flex align-items-center mt-3 ps-1">
                 <i class="contactanos__i bi bi-whatsapp"></i>
-                <span class="ms-2">3734</span>
+                <a class="contactanos__a ms-2 " target="_blank" href="https://wa.link/v7kyhq">3517160821</a>
               </li>
               <li class="d-flex align-items-center mt-3 ps-1">
                 <i class="contactanos__i bi bi-instagram"></i>
