@@ -1,7 +1,12 @@
+/* ------------------ GLOBALES---------------------------*/
 a {
   text-decoration: none;
   color: black;
   cursor: pointer;
+}
+
+i {
+  font-style: normal;
 }
 
 ul {
@@ -14,75 +19,79 @@ body {
   color: var(--color-texto);
 }
 
-/* HEADER*/
-header {
+/* ------------------ PERSONALIZADOS---------------------------*/
+/* --------------- HEADER --------------- */
+.header {
   height: 26.36dvh;
   user-select: none;
 }
 
-.fondoEncabezado {
+/* ---- HEADER__background ------*/
+.background {
   height: 79.3%;
 }
-.fondoEncabezado p {
+.background__p {
   font-size: 0.9em;
 }
 
-.logo {
+.background__logo {
   width: 7.4em;
   position: absolute;
   top: 28px;
   right: 8px;
 }
 
-.navbar {
+/* ---- HEADER__nav ------*/
+.nav {
   background-color: var(--color-primario);
   height: 21%;
   border-top: 1px solid var(--nav-borde);
   border-bottom: 1px solid var(--nav-borde);
 }
 
-.navbar-toggler:focus {
+.nav__btnMenu:focus {
   border: none;
   box-shadow: var(--nav-focus);
 }
 
-.navbar-toggler i {
+.nav__i {
   color: var(--color-nav-texto);
   opacity: 0.9;
   font-size: 1.2em;
 }
-.navbar-toggler i:hover {
+.nav__i:hover {
   opacity: 1;
 }
 
-.dropdown button {
+/* ---- HEADER__nav_Theme ------*/
+.nav__themeBtn {
   /*boton desplegable del tema*/
   background-color: var(--color-primario) !important;
   border-radius: 8px;
 }
 
-.dropdown button:focus {
+.nav__themeBtn:focus {
   box-shadow: var(--nav-focus);
 }
 
-.dropdown button:hover i {
-  opacity: 1;
-}
-
-.dropdown button i {
+.nav__themeBtn i {
   /*boton desplegable del tema*/
   font-size: 1.3em;
   color: var(--color-nav-texto);
   opacity: 0.9;
 }
 
-.dropdown-toggle::after {
+.nav__themeBtn:hover i {
+  opacity: 1;
+}
+
+.nav__themeBtn::after {
   width: 10px;
   color: var(--color-nav-texto);
   opacity: 0.9;
 }
 
-.dropdown-menu[data-bs-popper] {
+.themeList[data-bs-popper] {
   left: -13px;
   min-width: 1em;
   top: 93%;
@@ -90,98 +99,92 @@ header {
   width: 5.5em;
 }
 
-.dropdown-item {
+.themeList__item {
   color: var(--color-nav-texto);
 }
 
-.dropdown-item:hover,
-.dropdown-item:active,
-.dropdown .active {
+.themeList__item:hover,
+.themeList__item:active,
+.themeList__item.active {
   background-color: var(--borde);
   color: var(--color-nav-texto);
 }
 
-.offcanvas {
+/* ---- HEADER__nav__menu ------*/
+.nav__menu {
   /*Es el contenedor del nav desplegable*/
   width: 13em !important;
   background-color: var(--color-primario);
   color: var(--color-nav-texto);
   transition: 0.5s ease-in-out !important;
 }
-.offcanvas button {
+.nav__btn {
   opacity: 1;
 }
-.offcanvas a {
+.menuList__a {
   color: var(--color-nav-texto);
 }
 
-.nav-link.active,
-.nav-link:hover {
+.menuList__a.active,
+.menuList__a:hover {
   color: var(--color-nav-link-active) !important;
 }
 
-/* MAIN */
+/* --------------- MAIN --------------- */
 
-/* SECTION: CARRUSEL */
-main section:first-child {
-  user-select: none;
-}
-
+/* ---- SECTION: CAROUSEL ------*/
 .carousel {
   height: var(--carousel-height);
   background-image: var(--fondo-imagen);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  user-select: none;
 }
 
-.carousel-item img {
+.carousel__img {
   filter: var(--brillo-img-carousel);
 }
 
-/*SECTION: CONTACTANOS*/
-.contactanos h2 {
+/* ---- SECTION: CONTACTANOS ------*/
+.contactanos__h2 {
   text-align: center;
 }
 
-.contactanos ul li i {
+.contactanos__horarios {
+  width: calc(100% - 2.3em);
+}
+
+.contactanos__i {
   font-size: 2em;
   color: var(--borde);
 }
 
-.contactanos ul li:last-child i {
+.contactanos__i--modified {
   font-size: 2.3em;
 }
 
-.link {
+.contactanos__a {
   color: var(--color-texto);
 }
 
-.link:hover {
+.contactanos__a:hover {
   color: var(--borde);
   font-weight: 500;
 }
 
-.divHorarios {
-  width: calc(100% - 2.3em);
-}
-
-i {
-  font-style: normal;
-}
-
-/*SECTION: DEJANOS TU COMENTARIO*/
-form {
+/* ---- SECTION: DEJANOS TU COMENTARIO ------*/
+.dejanos__form {
   height: 17em;
 }
 
-.msj_error {
+.form__error {
   height: 2em;
   font-size: 0.9em;
   color: var(--color-msjerror);
 }
 
-form textarea {
+.form__textarea {
   height: 13.1em;
   color: var(--color-texto);
   border-color: var(--textarea-borde);
@@ -191,53 +194,43 @@ form textarea {
   caret-color: var(--borde);
 }
 
-form textarea:focus {
+.form__textarea:focus {
   outline: 0;
   box-shadow: 0 0 0 0.25rem var(--textarea-focus);
 }
 
-form textarea:focus + .msj_error {
-  display: block;
-}
-
-form input {
+.form__input {
   height: 2.5em;
   border: 1px solid var(--borde);
   border-radius: 8px;
   color: var(--borde);
   background: transparent;
 }
-form input:hover {
+.form__input:hover {
   background-color: var(--borde);
   color: var(--fondo);
   box-shadow: 0 0 5px var(--borde);
 }
 
-form input[disabled]:hover {
-  background-color: transparent;
-  color: var(--borde);
-  box-shadow: 0 0 0;
-}
-
-/*SECTION: COMENTARIOS*/
-.divComentarios div {
+/* ---- SECTION: COMENTARIO ------*/
+.comentarios__card {
   border-color: var(--borde) !important;
   background-color: var(--relleno);
   font-size: 0.9em;
   min-height: 10em;
 }
 
-.divComentarios p {
+.comentarios__p {
   text-align: justify;
   word-wrap: break-word;
   box-sizing: border-box;
 }
 
-.divFlechas {
+.comentarios__controllers {
   margin-top: 0;
 }
 
-.divFlechas i {
+.controllers__i {
   color: var(--arrow);
   font-size: 2.5em;
   cursor: pointer;
@@ -245,21 +238,22 @@ form input[disabled]:hover {
   height: 1em;
 }
 
-.divFlechas i:hover {
+.controllers__i:hover {
   color: var(--color-primario);
 }
 
-/*FOOTER*/
-footer img {
-  width: 1.6em;
-}
-footer {
+/* ---- FOOTER ------*/
+.footer {
   color: var(--firma-autor);
 }
+.footer__img {
+  width: 1.6em;
+}
 
+/* --------------- MEDIAQUERYS --------------- */
 /*BREAKPOINT*/
 @media screen and (min-width: 992px) {
-  .contactanos h2 {
+  .contactanos__h2 {
     text-align: start;
   }
 }
@@ -271,17 +265,17 @@ footer {
     --carousel-height: 76.64dvh;
   }
 
-  header {
+  .header {
     height: 23.36dvh; /*hacer una var*/
   }
-  .dropdown-menu[data-bs-popper] {
+  .themeList[data-bs-popper] {
     top: 95%;
   }
 
-  .divComentarios div {
+  .comentarios__card {
     font-size: 0.93em;
   }
-  .divFlechas {
+  .comentarios__controllers {
     margin-top: 0.5em;
   }
 }
@@ -291,19 +285,19 @@ footer {
     --carousel-height: 78.64dvh;
   }
 
-  header {
+  .header {
     height: 21.36dvh; /*hacer una var*/
   }
-  .dropdown-menu[data-bs-popper] {
+  .themeList[data-bs-popper] {
     top: 99%;
   }
-  .divComentarios div {
+  .comentarios__card {
     font-size: 1em;
   }
 }
 
 @media screen and (min-height: 900px) {
-  .dropdown-menu[data-bs-popper] {
+  .themeList[data-bs-popper] {
     top: 107%;
   }
 }

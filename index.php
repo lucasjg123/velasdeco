@@ -75,39 +75,39 @@ $Listado = listarComentarios($MiConexion, 0);
   </head>
   <body>
     <!-- HEADER: Inicio -->
-    <header class="container-fluid">
+    <header class="header container-fluid">
       <!-- fondo Velas Deco -->
-      <div class="row align-content-center fondoEncabezado">
+      <div class="background row align-content-center">
         <h1 class="text-center m-0 pt-4">VELAS DECO</h1>
-        <p class="text-center m-0">Lorem ipsum dolor sit</p>
-        <img class="logo d-none d-lg-block" src="img/logo.jpeg" alt="logo" />
+        <p class="background__p text-center m-0">Lorem ipsum dolor sit</p>
+        <img class="background__logo d-none d-lg-block" src="img/logo.jpeg" alt="logo" />
       </div>
       <!-- nav -->
-      <nav class="row navbar p-0">
+      <nav class="nav row navbar p-0">
         <div class="container-fluid">
           <button
-            class="navbar-toggler px-1 py-0 border-0"
+            class="nav__btnMenu navbar-toggler px-1 py-0 border-0"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar"
           >
-            <i class="bi bi-list"></i>
+            <i class="nav__i bi bi-list"></i>
           </button>
-          <div class="dropdown me-3">
+          <div class="nav__theme dropdown me-3">
             <button
-              class="dropdown-toggle border-0 p-0"
+              class="nav__themeBtn dropdown-toggle border-0 p-0"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               <i id="themeIcon" class="bi bi-moon-fill ps-2"></i>
             </button>
-            <ul class="dropdown-menu">
+            <ul class="themeList dropdown-menu">
               <li>
                 <a
                   id="light"
-                  class="dropdown-item"
+                  class="themeList__item dropdown-item"
                   onclick="changeTheme('light')"
                   ><i class="bi bi-brightness-high-fill"></i> Light</a
                 >
@@ -115,20 +115,20 @@ $Listado = listarComentarios($MiConexion, 0);
               <li>
                 <a
                   id="dark"
-                  class="dropdown-item active"
+                  class="themeList__item dropdown-item active"
                   onclick="changeTheme('dark')"
                   ><i class="bi bi-moon-fill"></i> Dark</a
                 >
               </li>
               <li>
-                <a id="auto" class="dropdown-item" onclick="changeTheme('auto')"
+                <a id="auto" class="themeList__item dropdown-item" onclick="changeTheme('auto')"
                   ><i class="bi bi-circle-half"></i> Auto</a
                 >
               </li>
             </ul>
           </div>
           <div
-            class="offcanvas offcanvas-start"
+            class="nav__menu offcanvas offcanvas-start"
             tabindex="-1"
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
@@ -137,29 +137,29 @@ $Listado = listarComentarios($MiConexion, 0);
               <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
               <button
                 type="button"
-                class="btn-close btn-close-white"
+                class="nav__btn btn-close btn-close-white"
                 data-bs-dismiss="offcanvas"
                 aria-label="Close"
               ></button>
             </div>
             <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <ul class="menuList navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"
+                  <a class="menuList__a nav-link active" aria-current="page" href="#"
                     >Home</a
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Packs</a>
+                  <a class="menuList__a nav-link" href="#">Packs</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Decorativas</a>
+                  <a class="menuList__a nav-link" href="#">Decorativas</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Ofertas</a>
+                  <a class=menuList__a nav-link" href="#">Ofertas</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Personalizados</a>
+                  <a class="menuList__a nav-link" href="#">Personalizados</a>
                 </li>
               </ul>
             </div>
@@ -214,32 +214,32 @@ $Listado = listarComentarios($MiConexion, 0);
       <!-- MIXTO -->
       <div class="row row-cols-1 row-cols-lg-2">
         <!-- SECTION: Contactanos -->
-        <sec class="col-xl-4 contactanos mt-5">
+        <sec class="contactanos col-xl-4 mt-5">
           <div class="row justify-content-center justify-content-xl-end">
             <ul class="col-9 col-sm-6 col-md-4 col-lg-9 col-xl-10 ps-2 pe-0">
-              <h2 class="">Contactanos</h2>
+              <h2 class="contactanos__h2">Contactanos</h2>
               <li class="d-flex align-items-center ps-1">
-                <i class="bi bi-clock"></i>
-                <div class="d-inline-flex flex-column divHorarios">
+                <i class="contactanos__i bi bi-clock"></i>
+                <div class="contactanos__horarios d-inline-flex flex-column">
                   <span class="ms-2"> Horarios de atencion: </span>
                   <span class="ms-2"> Lunes a Viernes: 10hs a 18hs </span>
                 </div>
               </li>
               <li class="d-flex align-items-center mt-3 ps-1">
-                <i class="bi bi-whatsapp"></i>
+                <i class="contactanos__i bi bi-whatsapp"></i>
                 <span class="ms-2">3734</span>
               </li>
               <li class="d-flex align-items-center mt-3 ps-1">
-                <i class="bi bi-instagram"></i>
+                <i class="contactanos__i bi bi-instagram"></i>
                 <a
                   href="https://www.instagram.com/velasdeco_aromatics._cba/"
-                  class="ms-2 link"
+                  class="contactanos__a ms-2"
                   target="_blank"
                   >velasdeco_aromatics._cba</a
                 >
               </li>
               <li class="d-flex align-items-center mt-3">
-                <i class="bi bi-geo-alt"></i>
+                <i class="contactanos__i contactanos__i--modified bi bi-geo-alt"></i>
                 <span class="ms-2">Córdoba, Argentina</span>
               </li>
             </ul>
@@ -247,23 +247,23 @@ $Listado = listarComentarios($MiConexion, 0);
         </sec>
 
         <!-- SECTION: Dejanos tu comentario -->
-        <sec class="col-xl-4 mt-5">
+        <sec class="dejanos col-xl-4 mt-5">
           <h2 class="text-center">Dejanos tu comentario</h2>
           <form
             method="post"
-            class="row d-flex flex-column align-items-center justify-content-around"
+            class="dejanos__form row d-flex flex-column align-items-center justify-content-around"
             style="<?php if(!empty($Mensaje)){ echo "height: 19em;"; } ?>"
           >
-            <?php if(!empty($Mensaje)){ ?> <div class="col-10 msj_error text-center"> <?php echo $Mensaje; ?> </div> <?php } ?> 
+            <?php if(!empty($Mensaje)){ ?> <div class="form__error col-10 text-center"> <?php echo $Mensaje; ?> </div> <?php } ?> 
 
             <textarea
-              class="col-8 col-sm-5 col-lg-7 col-xl-9 col-xxl-8 rounded-4 py-1"
+              class="form__textarea col-8 col-sm-5 col-lg-7 col-xl-9 col-xxl-8 rounded-4 py-1"
               name="comentario"
               id="textarea"
               placeholder="Ingresa tu comentario"
               maxlength="300" <?php  if(!empty($Mensaje)){ echo "autofocus";} ?>><?php echo $Comentario ?></textarea>
             <input
-              class="col-3 col-md-2 col-lg-3 col-xl-4 col-xxl-3"
+              class="form__input col-3 col-md-2 col-lg-3 col-xl-4 col-xxl-3"
               type="submit"
               name="BotonEnviar"
               id="boton"
@@ -273,43 +273,43 @@ $Listado = listarComentarios($MiConexion, 0);
       </div>
 
       <!-- SECTION: Comentarios -->
-      <sec class="row flex-column mt-5 mb-3">
+      <sec class="comentarios row flex-column mt-5 mb-3">
         <h2 class="text-center mb-1">Comentarios</h2>
 
         <!-- contenedor de comentarios -->
         <div
-          class="divComentarios row row-cols-1 justify-content-center justify-content-md-evenly mx-auto mt-2"
+          class="row row-cols-1 justify-content-center justify-content-md-evenly mx-auto mt-2"
         >
           <div
-            class="col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
+            class="comentarios__card col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
           >
-            <p id="comment1"><?php if(!empty($Listado[0])) echo $Listado[0]?></p>
+            <p class="comentarios__p" id="comment1"><?php if(!empty($Listado[0])) echo $Listado[0]?></p>
           </div>
           <div
-            class="col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
+            class="comentarios__card col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
           >
-            <p id="comment2"><?php if(!empty($Listado[1])) echo $Listado[1]?></p>
+            <p class="comentarios__p" id="comment2"><?php if(!empty($Listado[1])) echo $Listado[1]?></p>
           </div>
           <div
-            class="col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
+            class="comentarios__card col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
           >
-            <p id="comment3"><?php if(!empty($Listado[2])) echo $Listado[2]?></p>
+            <p class="comentarios__p" id="comment3"><?php if(!empty($Listado[2])) echo $Listado[2]?></p>
           </div>
         </div>
 
         <!-- Flechas cometarios -->
-        <div class="divFlechas d-flex w-50 mx-auto justify-content-center px-0">
-          <i id="prev" class="bi bi-caret-left-fill mx-4"></i>
-          <i id="sig" class="bi bi-caret-right-fill mx-4"></i>
+        <div class="comentarios__controllers d-flex w-50 mx-auto justify-content-center px-0">
+          <i id="prev" class="controllers__i bi bi-caret-left-fill mx-4"></i>
+          <i id="sig" class="controllers__i bi bi-caret-right-fill mx-4"></i>
         </div>
       </sec>
     </main>
     <!-- MAIN: Fin -->
 
     <!-- FOOTER: Inicio -->
-    <footer class="container mt-5 pt-5">
+    <footer class="footer container mt-5 pt-5">
       <p class="text-center">
-        <img src="img/iconos/lapiz.png" alt="" />
+        <img class="footer__img" src="img/iconos/lapiz.png" alt="" />
         Autor: Lucas Godoy
       </p>
     </footer>
