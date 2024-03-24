@@ -14,30 +14,30 @@ $Comentario="";
 
 // Si se presiono el boton
 if(!empty($_POST['BotonEnviar'])){ 
-    $Mensaje = validar();
+  $Mensaje = validar();
 
-    if(empty($Mensaje)){// Si el msj esta vacio, no hay ningun error
-      //inserto el comentariio
-      insertarComentario($MiConexion);
-      header('Location: index.php');
-      exit;
-    } 
+  if(empty($Mensaje)){// Si el msj esta vacio, no hay ningun error
+    //inserto el comentariio
+    insertarComentario($MiConexion);
+    header('Location: index.php');
+    exit;
+  } 
 
-    /*ESTE BLOQUE SE EJECUTA SI EL COMENTARIO NO ES VALIDO */
-    // Guardo esta info en $_SESSION ya q esta sobrevive al reload y ademas no salta el cartel del formulario.
-    $_SESSION["comentario"] = $_POST['comentario']; // guardo el comentario enviado  para mostrarlo y q lo termine de enviar
-    $_SESSION["mensaje"] = $Mensaje; 
-    $_POST = array(); // vacio la variable _POST ya que sino salta cartel al recargar xq tiene data
-    $_SERVER['REQUEST_METHOD'] = null; // Es necesario sino el requiere selecComentario ejecuta otro bloque q es para el fetch
+  /*ESTE BLOQUE SE EJECUTA SI EL COMENTARIO NO ES VALIDO */
+  // Guardo esta info en $_SESSION ya q esta sobrevive al reload y ademas no salta el cartel del formulario.
+  $_SESSION["comentario"] = $_POST['comentario']; // guardo el comentario enviado  para mostrarlo y q lo termine de enviar
+  $_SESSION["mensaje"] = $Mensaje; 
+  $_POST = array(); // vacio la variable _POST ya que sino salta cartel al recargar xq tiene data
+  $_SERVER['REQUEST_METHOD'] = null; // Es necesario sino el requiere selecComentario ejecuta otro bloque q es para el fetch
 
-    header('Location: index.php'); // vuelvo a cargar la pagina para q la variable $_POST ya quede vacia
-    exit; // esto manda de una a index.php
+  header('Location: index.php'); // vuelvo a cargar la pagina para q la variable $_POST ya quede vacia
+  exit; // esto manda de una a index.php
 }
 
 if(!empty($_SESSION["mensaje"])){ // este bloque se ejecuta si el comentario no fue valido y _SESSION tiene info del error (linea 23 y 24)
-    $Mensaje = $_SESSION["mensaje"];
-    $Comentario = $_SESSION["comentario"];
-    session_unset(); // Borro sel contenido de $_SESSION para q si el usuario desea recargar los errores desaparezcan.
+  $Mensaje = $_SESSION["mensaje"];
+  $Comentario = $_SESSION["comentario"];
+  session_unset(); // Borro sel contenido de $_SESSION para q si el usuario desea recargar los errores desaparezcan.
 }
 
 // Busco la cantidad de comentarios
