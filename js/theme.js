@@ -8,16 +8,6 @@ function ConsultarTemaOS() {
   darkQuery.matches ? (theme = "dark") : (theme = "light");
 
   return theme;
-
-  /* eXPLICACION: codigo simplificado
-  hago la consulta al cliente de si tiene el tema Oscuro en el navegador
-  if (darkQuery.matches) {
-    // Si la consulta es acertada, es decir el tema del nav del usuario es dark
-    setTheme("dark", false); //Entonces establezco en dark
-  } else {
-    setTheme("light", false); // Si tiene otro modo entonces es light
-    // El false es para q no se guarde el tema ya q debe permanecer el "auto"
-  }*/
 }
 
 // cambia el iconoTema del nav
