@@ -1,6 +1,6 @@
 <?php 
 
-function CountComentarios($conexion){
+function commentsCount($conexion){
     // Consulta SQL para contar los registros en la tabla
     $SQL = "SELECT COUNT(*) AS cant FROM comentarios";
 

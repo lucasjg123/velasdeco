@@ -3,7 +3,7 @@ require_once 'php/carrucel.php';
 require_once 'php/funciones/conexion.php'; 
 require_once "php/funciones/validarComentario.php";
 require_once "php/funciones/insertarComentario.php";
-require_once "php/funciones/countComentarios.php";
+require_once "php/funciones/commentsCount.php";
 session_start();
 // Abrimos conexion a la BD
 $MiConexion = ConexionBD();
@@ -41,7 +41,7 @@ if(!empty($_SESSION["mensaje"])){ // este bloque se ejecuta si el comentario no 
 }
 
 // Busco la cantidad de comentarios
-$countCommentsPHP = CountComentarios($MiConexion);
+$commentsCountPHP = commentsCount($MiConexion);
 
 require_once "php/funciones/selectComments.php";
 $Listado = selectComments($MiConexion);
@@ -326,7 +326,7 @@ mysqli_close($MiConexion);
       crossorigin="anonymous"
     ></script>
     <script>
-      let countCommentsJS = <?php echo $countCommentsPHP  ?>;
+      let commentsCountJS = <?php echo $commentsCountPHP  ?>;
     </script>
     <script src="js/main.js"></script>
     

@@ -1,42 +1,38 @@
-const cantComent_mostrar = 3;
+const commentsCountToShow = 3;
 let actualPage = 1; // Indica en q pagina me encuentro
+let pageCount;
 
 // Establece la cant de paginas de comentarios a mostrar
-function CalcularCantPaginas(countComments) {
-  // cantidad de paginas a mostrar
-  let cantPaginas = parseInt(countComments / cantComent_mostrar);
+function calculatePageCount(commentsCount) {
+  // Math.ceil: Si de la div queda un resto, aumenta el cociente en una unidad
+  pageCount = Math.ceil(commentsCount / commentsCountToShow);
 
-  // si queda un resto de la div, agrego una pagina mas
-  if (countComments % cantComent_mostrar != 0) cantPaginas++;
-
-  console.log("Cantidad de comentarios:", countComments);
-  console.log("Cantidad de paginas a mostrar:", cantPaginas);
-
-  return cantPaginas;
+  console.log("Cantidad de comentarios:", commentsCount);
+  console.log("Cantidad de paginas a mostrar:", pageCount);
 }
 
 // Se activa si el usuario quiere ver comentarios previos o siguentes
-function PaginaSigPrev(sig) {
-  // recibe un bool de param q indica si se presiono prev o sig
+function pageNextPrev(next) {
+  // recibe un bool de param q indica si se presiono prev o next
 
-  // Pagina sig y pag es < al LIMITE SUPERIOR(cant pag), no estamos en la ult pagina x ende hay una mas
-  if (sig) {
-    if (actualPage < cantPaginas) {
+  // Pagina next y pag es < al LIMITE SUPERIOR(cant pag), no estamos en la ult pagina x ende hay una mas
+  if (next) {
+    if (actualPage < pageCount) {
       actualPage++; // aumento la pag en 1
-      RequestComments();
+      requestComments();
     }
   }
   // pagina anterior y pag es > 1(LIMITE INFERIOR), no estamos en la 1er pagina x ende hay una previa
   else if (actualPage > 1) {
     actualPage--; // disminuyo 1 pagina
-    RequestComments();
+    requestComments();
   }
 
   console.log("Mostramos la actualPagina:", actualPage);
 }
 
 // realiza la peticion post a selectComments.php para solicitar comentarios
-function RequestComments() {
+function requestComments() {
   const url = "php/funciones/selectComments.php";
 
   // Objeto donde guardo los datos a enviar a php
@@ -75,7 +71,7 @@ function updateComments(comments) {
   let e; // var temporal para almacenar el elemento html de cada comentario
 
   // LLenamos los div p con los nuevos comentarios
-  for (let i = 0; i < cantComent_mostrar; i++) {
+  for (let i = 0; i < commentsCountToShow; i++) {
     e = document.getElementById("comment" + (i + 1));
 
     comments[i] != null ? (e.innerHTML = comments[i]) : (e.innerHTML = "");
@@ -83,18 +79,18 @@ function updateComments(comments) {
 }
 
 // ----- MAIN -------
-const cantPaginas = CalcularCantPaginas(countCommentsJS);
-console.log("Cantidad de comentarios desde PHP:", countCommentsJS);
+calculatePageCount(commentsCountJS);
+console.log("Cantidad de comentarios desde PHP:", commentsCountJS);
 
 // HUB: objetivo final: mostrar en la pagina los comentarios del array
 
 //Evento de click
 document.getElementById("prev").addEventListener("click", () => {
-  PaginaSigPrev(false);
+  pageNextPrev(false);
 });
 
 document.getElementById("sig").addEventListener("click", () => {
-  PaginaSigPrev(true);
+  pageNextPrev(true);
 });
 
 // del codigo
