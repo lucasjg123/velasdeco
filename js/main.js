@@ -1,6 +1,5 @@
-let actualPage = 1; // Indica en q pagina me encuentro
-let limite = 0;
 const cantComent_mostrar = 3;
+let actualPage = 1; // Indica en q pagina me encuentro
 
 // Establece la cant de paginas de comentarios a mostrar
 function CalcularCantPaginas(countComments) {
@@ -20,25 +19,20 @@ function CalcularCantPaginas(countComments) {
 function HUB_EventoPagina(sig) {
   // recibe un bool de param q indica si se presiono prev o sig
 
-  // Pagina sig
+  // Pagina sig y pag es < al LIMITE SUPERIOR(cant pag), no estamos en la ult pagina x ende hay una mas
   if (sig) {
-    // Si es sig y pag es < al LIMITE SUPERIOR(cant pag), no estamos en la ult pagina x ende hay una mas
     if (actualPage < cantPaginas) {
       actualPage++; // aumento la pag en 1
-      limite += 3; // le sumo 4 al limite
       ConexionFetchPOST();
     }
   }
-  // pagina anterior
+  // pagina anterior y pag es > 1(LIMITE INFERIOR), no estamos en la 1er pagina x ende hay una previa
   else if (actualPage > 1) {
-    // si pag es > 1(LIMITE INFERIOR), no estamos en la 1er pagina x ende hay una previa
     actualPage--; // disminuyo 1 pagina
-    limite -= 3; //le restamos 4 al limite
     ConexionFetchPOST();
   }
 
   console.log("Mostramos la actualPageina:", actualPage);
-  console.log("Limite actual:", limite);
 }
 
 function ConexionFetchPOST() {
@@ -46,7 +40,7 @@ function ConexionFetchPOST() {
 
   // Objeto donde guardo los datos a enviar a php
   const data = {
-    limite: limite,
+    page: actualPage,
   };
 
   // Configuracion de la solicitud
