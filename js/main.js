@@ -1,4 +1,4 @@
-let pag = 1; // Indica en q pagina me encuentro
+let actualPage = 1; // Indica en q pagina me encuentro
 let limite = 0;
 const cantComent_mostrar = 3;
 
@@ -23,23 +23,21 @@ function HUB_EventoPagina(sig) {
   // Pagina sig
   if (sig) {
     // Si es sig y pag es < al LIMITE SUPERIOR(cant pag), no estamos en la ult pagina x ende hay una mas
-    if (pag < cantPaginas) {
-      pag++; // aumento la pag en 1
+    if (actualPage < cantPaginas) {
+      actualPage++; // aumento la pag en 1
       limite += 3; // le sumo 4 al limite
       ConexionFetchPOST();
     }
   }
   // pagina anterior
-  else {
-    if (pag > 1) {
-      // si pag es > 1(LIMITE INFERIOR), no estamos en la 1er pagina x ende hay una previa
-      pag--; // disminuyo 1 pagina
-      limite -= 3; //le restamos 4 al limite
-      ConexionFetchPOST();
-    }
+  else if (actualPage > 1) {
+    // si pag es > 1(LIMITE INFERIOR), no estamos en la 1er pagina x ende hay una previa
+    actualPage--; // disminuyo 1 pagina
+    limite -= 3; //le restamos 4 al limite
+    ConexionFetchPOST();
   }
 
-  console.log("Mostramos la pagina:", pag);
+  console.log("Mostramos la actualPageina:", actualPage);
   console.log("Limite actual:", limite);
 }
 
