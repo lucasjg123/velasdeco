@@ -224,10 +224,13 @@ form input[disabled]:hover {
   border-color: var(--borde) !important;
   background-color: var(--relleno);
   font-size: 0.9em;
+  min-height: 10em;
 }
 
 .divComentarios p {
   text-align: justify;
+  word-wrap: break-word;
+  box-sizing: border-box;
 }
 
 .divFlechas {

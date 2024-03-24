@@ -278,7 +278,7 @@ $Listado = listarComentarios($MiConexion, 0);
 
         <!-- contenedor de comentarios -->
         <div
-          class="row row-cols-1 justify-content-center justify-content-md-evenly divComentarios mx-auto mt-2"
+          class="divComentarios row row-cols-1 justify-content-center justify-content-md-evenly mx-auto mt-2"
         >
           <div
             class="col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
