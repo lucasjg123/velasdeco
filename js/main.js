@@ -43,7 +43,7 @@ function HUB_EventoPagina(sig) {
 }
 
 function ConexionFetchPOST() {
-  const url = "php/funciones/selectComentario.php";
+  const url = "php/funciones/selectComments.php";
 
   // Objeto donde guardo los datos a enviar a php
   const data = {

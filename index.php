@@ -43,8 +43,8 @@ if(!empty($_SESSION["mensaje"])){ // este bloque se ejecuta si el comentario no 
 // Busco la cantidad de comentarios
 $countCommentsPHP = CountComentarios($MiConexion);
 
-require_once "php/funciones/selectComentario.php";
-$Listado = listarComentarios($MiConexion, 0);
+require_once "php/funciones/selectComments.php";
+$Listado = selectComments($MiConexion, 0);
 
 // Cerrar la conexión
 mysqli_close($MiConexion);

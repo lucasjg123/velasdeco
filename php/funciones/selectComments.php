@@ -10,12 +10,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $limite = $data["limite"];
     $conexion = ConexionBD(); // busco la conexion
 
-    $lista = listarComentarios($conexion, $limite);
+    $lista = selectComments($conexion, $limite);
 
     echo json_encode($lista);
 }
 
-function listarComentarios($vConexion, $limite){
+function selectComments($vConexion, $limite){
     $Listado = array();
 
     // 1) generar consulta
