@@ -1,5 +1,47 @@
 <?php 
-require_once 'php/carrucel.php'
+require_once 'php/carrucel.php';
+require_once 'php/funciones/conexion.php'; 
+session_start();
+
+$MiConexion = ConexionBD();
+
+$Mensaje = "";
+$Comentario="";
+
+// Si se presiono el boton
+if(!empty($_POST['BotonEnviar'])){ 
+    require_once "php/funciones/validarComentario.php";
+    $Mensaje = validar();
+
+    if(empty($Mensaje)){// Si el msj esta vacio, no hay ningun error
+        //inserto el comentariio
+        require_once "php/funciones/insertarComentario.php";
+        insertarComentario($MiConexion);
+        header('Location: index.php');
+        exit;
+    } 
+    /*ESTE BLOQUE SE EJECUTA SI EL COMENTARIO NO ES VALIDO */
+    // Guardo esta info en $_SESSION ya q esta sobrevive al reload y ademas no salta el cartel del formulario.
+    $_SESSION["comentario"] = $_POST['comentario']; // guardo el comentario enviado  para mostrarlo y q lo termine de enviar
+    $_SESSION["mensaje"] = $Mensaje; 
+    $_POST = array(); // vacio la variable _POST ya que sino salta cartel al recargar xq tiene data
+    $_SERVER['REQUEST_METHOD'] = null; // Es necesario sino el requiere selecComentario ejecuta otro bloque q es para el fetch
+
+    header('Location: index.php'); // vuelvo a cargar la pagina para q la variable $_POST ya quede vacia
+    exit; // esto manda de una a index.php
+}
+
+if(!empty($_SESSION["mensaje"])){ // este bloque se ejecuta si el comentario no fue valido y _SESSION tiene info del error (linea 23 y 24)
+    $Mensaje = $_SESSION["mensaje"];
+    $Comentario = $_SESSION["comentario"];
+    session_unset(); // Borro sel contenido de $_SESSION para q si el usuario desea recargar los errores desaparezcan.
+}
+
+
+
+require_once "php/funciones/selectComentario.php";
+
+$Listado = listarComentarios($MiConexion, 0);
 
 
 ?>
@@ -208,24 +250,22 @@ require_once 'php/carrucel.php'
         <sec class="col-xl-4 mt-5">
           <h2 class="text-center">Dejanos tu comentario</h2>
           <form
-            action=""
-            class="row d-flex flex-column align-items-center justify-content-evenly"
+            method="post"
+            class="row d-flex flex-column align-items-center justify-content-around"
+            style="<?php if(!empty($Mensaje)){ echo "height: 19em;"; } ?>"
           >
-            <div class="col msj_error text-center">
-              Debes ingresar un minimo de 5 caracteres!
-            </div>
+            <?php if(!empty($Mensaje)){ ?> <div class="col-10 msj_error text-center"> <?php echo $Mensaje; ?> </div> <?php } ?> 
+
             <textarea
-              class="col-8 col-sm-5 col-lg-7 col-xl-9 col-xxl-8 h-75 rounded-4 py-1"
-              name=""
+              class="col-8 col-sm-5 col-lg-7 col-xl-9 col-xxl-8 rounded-4 py-1"
+              name="comentario"
               id="textarea"
               placeholder="Ingresa tu comentario"
-              maxlength="300"
-            ></textarea>
+              maxlength="300" <?php  if(!empty($Mensaje)){ echo "autofocus";} ?>><?php echo $Comentario ?></textarea>
             <input
-              disabled
               class="col-3 col-md-2 col-lg-3 col-xl-4 col-xxl-3"
               type="submit"
-              name=""
+              name="BotonEnviar"
               id="boton"
             />
           </form>
@@ -243,42 +283,24 @@ require_once 'php/carrucel.php'
           <div
             class="col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
           >
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet
-              doloribus architecto dignissimos, sint, atque laudantium inventore
-              animi ab ad eligendi quia ipsa nobis esse modi, reiciendis
-              possimus minima qui recusandae!ma qui recusandae!i
-              recusandaeaeef3333
-            </p>
+            <p id="comment1"><?php if(!empty($Listado[0])) echo $Listado[0]?></p>
           </div>
           <div
             class="col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
           >
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet
-              doloribus architecto dignissimos, sint, atque laudantium inventore
-              animi ab ad eligendi quia ipsa nobis esse modi, reiciendis
-              possimus minima qui recusandae!ma qui recusandae!i
-              recusandaeaeef3333
-            </p>
+            <p id="comment2"><?php if(!empty($Listado[1])) echo $Listado[1]?></p>
           </div>
           <div
             class="col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
           >
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet
-              doloribus architecto dignissimos, sint, atque laudantium inventore
-              animi ab ad eligendi quia ipsa nobis esse modi, reiciendis
-              possimus minima qui recusandae!ma qui recusandae!i
-              recusandaeaeef3333
-            </p>
+            <p id="comment3"><?php if(!empty($Listado[2])) echo $Listado[2]?></p>
           </div>
         </div>
 
         <!-- Flechas cometarios -->
         <div class="divFlechas d-flex w-50 mx-auto justify-content-center px-0">
-          <i class="bi bi-caret-left-fill mx-4"></i>
-          <i class="bi bi-caret-right-fill mx-4"></i>
+          <i id="prev" class="bi bi-caret-left-fill mx-4"></i>
+          <i id="sig" class="bi bi-caret-right-fill mx-4"></i>
         </div>
       </sec>
     </main>
@@ -287,7 +309,8 @@ require_once 'php/carrucel.php'
     <!-- FOOTER: Inicio -->
     <footer class="container mt-5 pt-5">
       <p class="text-center">
-        <img src="img/iconos/lapiz.png" alt="" />Autor: Lucas Godoy
+        <img src="img/iconos/lapiz.png" alt="" />
+        Autor: Lucas Godoy
       </p>
     </footer>
     <!-- FOOTER: Fin -->
@@ -297,5 +320,6 @@ require_once 'php/carrucel.php'
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

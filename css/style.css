@@ -176,11 +176,13 @@ form {
 }
 
 .msj_error {
+  height: 2em;
   font-size: 0.9em;
   color: var(--color-msjerror);
 }
 
 form textarea {
+  height: 13.1em;
   color: var(--color-texto);
   border-color: var(--textarea-borde);
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
