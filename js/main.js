@@ -4,15 +4,14 @@ let cantComent;
 let cantComent_mostrar = 3; // Esta variable debe ajustarse deacuerdo al alto de la pantalla de cada celular
 let cantPaginas;
 
-function InicializarVariables(countComent) {
-  cantComent = countComent;
-  cantPaginas = parseInt(cantComent / cantComent_mostrar); // 5
+// Establece la cant de paginas de comentarios a mostrar
+function InicializarVariables(countComments) {
+  cantPaginas = parseInt(countComments / cantComent_mostrar);
 
-  if (cantComent % cantComent_mostrar != 0)
-    // si queda un resto de la div, agrego una pagina mas
-    cantPaginas++; // 6
+  // si queda un resto de la div, agrego una pagina mas
+  if (countComments % cantComent_mostrar != 0) cantPaginas++;
 
-  console.log("Cantidad de comentarios:", cantComent);
+  console.log("Cantidad de comentarios:", countComments);
   console.log("Cantidad de paginas a mostrar:", cantPaginas);
 }
 
@@ -89,18 +88,8 @@ function actualizarHTML(array) {
   }
 }
 
-fetch("php/funciones/countComentarios.php", { method: "POST" })
-  .then((res) => {
-    if (!res.ok) throw new Error("Hubo un error en la respuesta");
-    return res.json();
-  })
-  .then((data) => {
-    InicializarVariables(data);
-  })
-  .catch((error) => {
-    //En este bloque catch manejamos el error si es q se produce con "throw new Error"
-    console.error("Ocurrió un error " + error);
-  });
+InicializarVariables(countCommentsJS);
+console.log("Cantidad de comentarios desde PHP:", countCommentsJS);
 
 // HUB: objetivo final: mostrar en la pagina los comentarios del array
 

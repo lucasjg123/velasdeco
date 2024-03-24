@@ -1,25 +1,28 @@
 <?php 
 require_once 'php/carrucel.php';
 require_once 'php/funciones/conexion.php'; 
+require_once "php/funciones/validarComentario.php";
+require_once "php/funciones/insertarComentario.php";
+require_once "php/funciones/countComentarios.php";
 session_start();
-
+// Abrimos conexion a la BD
 $MiConexion = ConexionBD();
 
+// Inicializamos variables globales
 $Mensaje = "";
 $Comentario="";
 
 // Si se presiono el boton
 if(!empty($_POST['BotonEnviar'])){ 
-    require_once "php/funciones/validarComentario.php";
     $Mensaje = validar();
 
     if(empty($Mensaje)){// Si el msj esta vacio, no hay ningun error
-        //inserto el comentariio
-        require_once "php/funciones/insertarComentario.php";
-        insertarComentario($MiConexion);
-        header('Location: index.php');
-        exit;
+      //inserto el comentariio
+      insertarComentario($MiConexion);
+      header('Location: index.php');
+      exit;
     } 
+
     /*ESTE BLOQUE SE EJECUTA SI EL COMENTARIO NO ES VALIDO */
     // Guardo esta info en $_SESSION ya q esta sobrevive al reload y ademas no salta el cartel del formulario.
     $_SESSION["comentario"] = $_POST['comentario']; // guardo el comentario enviado  para mostrarlo y q lo termine de enviar
@@ -37,12 +40,14 @@ if(!empty($_SESSION["mensaje"])){ // este bloque se ejecuta si el comentario no 
     session_unset(); // Borro sel contenido de $_SESSION para q si el usuario desea recargar los errores desaparezcan.
 }
 
-
+// Busco la cantidad de comentarios
+$countCommentsPHP = CountComentarios($MiConexion);
 
 require_once "php/funciones/selectComentario.php";
-
 $Listado = listarComentarios($MiConexion, 0);
 
+// Cerrar la conexión
+mysqli_close($MiConexion);
 
 ?>
 
@@ -320,6 +325,10 @@ $Listado = listarComentarios($MiConexion, 0);
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script>
+      let countCommentsJS = <?php echo $countCommentsPHP  ?>;
+    </script>
     <script src="js/main.js"></script>
+    
   </body>
 </html>
