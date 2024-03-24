@@ -117,17 +117,3 @@ document.getElementById("sig").addEventListener("click", () => {
 // ctrl + k, ctrol + 0 minimizar
 // ctrl + k, ctrl + j expand
 // no se como hacerlo por bloque en el que estoy
-
-// FUNCION QUE ABRE Y OCULTA EL NAV
-function openNav() {
-  document.getElementById("nav").style.width = "250px";
-  document.getElementById("sombra1").style.zIndex = "1";
-  document.getElementById("sombra1").style.opacity = "1";
-  document.getElementById("sombra1").style.transition = "1.2s";
-}
-function closeNav() {
-  document.getElementById("nav").style.width = "0px";
-  document.getElementById("sombra1").style.opacity = "0";
-  document.getElementById("sombra1").style.zIndex = "-1";
-  document.getElementById("sombra1").style.transition = ".1s";
-}
