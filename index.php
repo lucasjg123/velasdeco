@@ -266,7 +266,7 @@ mysqli_close($MiConexion);
               name="comentario"
               id="textarea"
               placeholder="Ingresa tu comentario"
-              maxlength="300" <?php  if(!empty($Mensaje)){ echo "autofocus";} ?>><?php echo $Comentario ?></textarea>
+              maxlength="200" <?php  if(!empty($Mensaje)){ echo "autofocus";} ?>><?php echo $Comentario ?></textarea>
             <input
               class="form__input col-3 col-md-2 col-lg-3 col-xl-4 col-xxl-3"
               type="submit"

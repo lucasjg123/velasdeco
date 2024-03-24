@@ -217,7 +217,7 @@ body {
   border-color: var(--borde) !important;
   background-color: var(--relleno);
   font-size: 0.9em;
-  min-height: 10em;
+  height: 11.3em;
 }
 
 .comentarios__p {
