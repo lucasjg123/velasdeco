@@ -217,7 +217,7 @@ body {
   border-color: var(--borde) !important;
   background-color: var(--relleno);
   font-size: 0.9em;
-  height: 11.3em;
+  min-height: 11.3em;
 }
 
 .comentarios__p {
@@ -251,15 +251,8 @@ body {
 }
 
 /* --------------- MEDIAQUERYS --------------- */
-/*BREAKPOINT*/
-@media screen and (min-width: 992px) {
-  .contactanos__h2 {
-    text-align: start;
-  }
-}
 
 /*MEDIAQUERYS HEIGHT*/
-
 @media screen and (min-height: 700px) {
   :root {
     --carousel-height: 76.64dvh;

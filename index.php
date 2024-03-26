@@ -218,7 +218,7 @@ mysqli_close($MiConexion);
         <sec class="contactanos col-xl-4 mt-5">
           <div class="row justify-content-center justify-content-xl-end">
             <ul class="col-9 col-sm-6 col-md-4 col-lg-9 col-xl-10 ps-2 pe-0">
-              <h2 class="contactanos__h2">Contactanos</h2>
+              <h2 class="contactanos__h2 text-lg-start">Contactanos</h2>
               <li class="d-flex align-items-center ps-1">
                 <i class="contactanos__i bi bi-clock"></i>
                 <div class="contactanos__horarios d-inline-flex flex-column">
