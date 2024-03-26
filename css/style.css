@@ -252,7 +252,7 @@ body {
 
 /* --------------- MEDIAQUERYS --------------- */
 
-/*MEDIAQUERYS HEIGHT*/
+/*MEDIAQUERYS HEIGHT NAV Y GRALES*/
 @media screen and (min-height: 700px) {
   :root {
     --carousel-height: 76.64dvh;
@@ -292,5 +292,12 @@ body {
 @media screen and (min-height: 900px) {
   .themeList[data-bs-popper] {
     top: 107%;
+  }
+}
+
+/*MEDIAQUERYS HEIGHT VISTA DE COMENTARIOS*/
+@media screen and (max-width: 576px) and (min-height: 650px) {
+  .comentarios__card {
+    width: 20em;
   }
 }
