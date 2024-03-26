@@ -192,6 +192,7 @@ body {
   background-color: var(--relleno);
   resize: none;
   caret-color: var(--borde);
+  border-width: 2.5px;
 }
 
 .form__textarea:focus {
