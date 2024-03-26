@@ -302,3 +302,10 @@ body {
     width: 20em;
   }
 }
+
+/*MEDIAQUERYS ORIENTACION*/
+@media only screen and (orientation: landscape) {
+  /*h1 {
+    color: red;
+  }*/
+}
