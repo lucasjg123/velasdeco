@@ -59,7 +59,7 @@ mysqli_close($MiConexion);
     <meta name="description" content="Venta de velas aromaticas cba" />
     <meta name="keywords" content="velas, deco, velasdeco" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Velas Deco</title>
     <link
       href="css/bootstrap.css"
       rel="stylesheet"
@@ -70,7 +70,7 @@ mysqli_close($MiConexion);
     />
     <link rel="stylesheet" href="css/theme.css?v=<?php echo(rand()); ?>" />
     <link rel="stylesheet" href="css/style.css?v=<?php echo(rand()); ?>" />
-    
+    <link rel="stylesheet" href="css/mediaquerys.css?v=<?php echo(rand()); ?>" />
   </head>
   <body>
     <!-- HEADER: Inicio -->
