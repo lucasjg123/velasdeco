@@ -218,6 +218,7 @@ body {
   background-color: var(--relleno);
   font-size: 0.9em;
   min-height: 11.3em;
+  border-width: 2.5px !important;
 }
 
 .comentarios__p {
