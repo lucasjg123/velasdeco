@@ -93,6 +93,9 @@ mysqli_close($MiConexion);
           >
             <i class="nav__i bi bi-list"></i>
           </button>
+          <h2 class="nav__h2 fs-3 d-lg-none my-0">
+            VELAS DECO
+          </h2>
           <div class="nav__theme dropdown me-3">
             <button
               class="nav__themeBtn dropdown-toggle border-0 p-0"

@@ -63,6 +63,11 @@ body {
   opacity: 1;
 }
 
+/* ---- HEADER__nav__h2 ------*/
+.nav__h2 {
+  opacity: 0.9;
+}
+
 /* ---- HEADER__nav_Theme ------*/
 .nav__themeBtn {
   /*boton desplegable del tema*/
