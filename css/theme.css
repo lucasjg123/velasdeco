@@ -20,6 +20,7 @@
   --fondo-imagen: url(../img/fondos/night1.jpg);
   --brillo-img-carousel: brightness(80%);
   --arrow: var(--firma-autor);
+  --opacidad: 0.9;
 }
 
 :root[data-theme="light"] {
@@ -38,4 +39,5 @@
   --arrow: var(--borde);
 
   --color-primariov2: #48b99b;
+  --opacidad: 1;
 }
