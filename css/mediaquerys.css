@@ -49,12 +49,30 @@
 }
 
 /*MEDIAQUERYS ORIENTACION*/
-@media only screen and (orientation: landscape) {
-  /*h1 {
-    color: red;
-  }*/
-
+@media only screen and (orientation: landscape) and (max-width: 992px) {
   .header {
-    height: 46.36dvh;
+    height: 10.36dvh;
+  }
+
+  .background {
+    display: none;
+  }
+
+  .nav {
+    height: 100%;
+  }
+
+  :root {
+    --carousel-height: 89.64dvh;
+  }
+
+  /*para solventar el agrandamiento no deseado del nav*/
+  @media screen and (min-height: 460px) {
+    .header {
+      height: 7.36dvh;
+    }
+    :root {
+      --carousel-height: 92.64dvh;
+    }
   }
 }

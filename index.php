@@ -173,7 +173,7 @@ mysqli_close($MiConexion);
       <section class="row carousel">
         <div
           id="carouselExampleAutoplaying"
-          class="col-sm-9 col-md-7 col-lg-6 col-xl-5 col-xxl-4 col-xxxl-3 mx-auto carousel slide p-0 pointer-event"
+          class="col-sm-6 col-md-5 col-lg-6 col-xl-5 col-xxl-4 col-xxxl-3 mx-auto carousel slide p-0 pointer-event"
         >
           <!-- CUANDO LO HAGA .PHP REQUERIR CARRUCEL.PHP -->
           <div class="carousel-inner h-100">
