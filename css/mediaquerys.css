@@ -79,4 +79,13 @@
       --carousel-height: 92.64dvh;
     }
   }
+
+  /* para solventar distorsion de carouusel */
+  @media screen and (min-width: 576px) {
+    #carouselExampleAutoplaying {
+      /*COL-5*/
+      flex: 0 0 auto;
+      width: 33.33333333%;
+    }
+  }
 }
