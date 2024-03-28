@@ -58,6 +58,10 @@
     display: none;
   }
 
+  .nav__h2 {
+    display: inline;
+  }
+
   .nav {
     height: 100%;
   }

@@ -67,6 +67,7 @@ body {
 .nav__h2 {
   opacity: var(--opacidad);
   color: var(--color-nav-texto);
+  display: none;
 }
 
 /* ---- HEADER__nav_Theme ------*/
