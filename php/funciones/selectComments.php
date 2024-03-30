@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 function selectComments($vConexion, $page=1){
     $limite = ($page - 1) * 3; // calculamos el limite para la consulta sql
-    $Listado = array();
+    $listado = array();
 
     // generar consulta
     $SQL= "SELECT * from comentarios order by id desc limit $limite,3"; // el 0 debe ser una variable
@@ -28,11 +28,11 @@ function selectComments($vConexion, $page=1){
     // recorro el array con los resultados
     $i = 0;
     while ($data = mysqli_fetch_array($rs)) { // itera las filas retonadas
-        $Listado[$i] = $data["texto"];
+        $listado[$i] = $data["texto"];
         $i++;
     }
 
-    return $Listado;
+    return $listado;
         
 }
 
