@@ -1,0 +1,260 @@
+/* ------------------ GLOBALES---------------------------*/
+a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+i {
+  font-style: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+/* BODY */
+body {
+  background-color: var(--fondo);
+  color: var(--color-texto);
+}
+
+/* ------------------ PERSONALIZADOS---------------------------*/
+/* --------------- HEADER --------------- */
+.header {
+  height: 26.36dvh;
+  user-select: none;
+}
+
+/* ---- HEADER__background ------*/
+.background {
+  height: 79.3%;
+}
+.background__p {
+  font-size: 0.9em;
+}
+
+.background__logo {
+  width: 7.4em;
+  position: absolute;
+  top: 28px;
+  right: 8px;
+}
+
+/* ---- HEADER__nav ------*/
+.nav {
+  background-color: var(--color-primario);
+  height: 21%;
+  border-top: 1px solid var(--nav-borde);
+  border-bottom: 1px solid var(--nav-borde);
+}
+
+.nav__btnMenu:focus {
+  border: none;
+  box-shadow: var(--nav-focus);
+}
+
+.nav__i {
+  color: var(--color-nav-texto);
+  opacity: 0.9;
+  font-size: 1.2em;
+}
+.nav__i:hover {
+  opacity: 1;
+}
+
+/* ---- HEADER__nav__h2 ------*/
+.nav__h2 {
+  opacity: var(--opacidad);
+  color: var(--color-nav-texto);
+  display: none;
+}
+
+/* ---- HEADER__nav_Theme ------*/
+.nav__themeBtn {
+  /*boton desplegable del tema*/
+  background-color: var(--color-primario) !important;
+  border-radius: 8px;
+}
+
+.nav__themeBtn:focus {
+  box-shadow: var(--nav-focus);
+}
+
+.nav__themeBtn i {
+  /*boton desplegable del tema*/
+  font-size: 1.3em;
+  color: var(--color-nav-texto);
+  opacity: 0.9;
+}
+
+.nav__themeBtn:hover i {
+  opacity: 1;
+}
+
+.nav__themeBtn::after {
+  width: 10px;
+  color: var(--color-nav-texto);
+  opacity: 0.9;
+}
+
+.themeList[data-bs-popper] {
+  left: -13px;
+  min-width: 1em;
+  top: 93%;
+  background-color: var(--color-primario);
+  width: 5.5em;
+}
+
+.themeList__item {
+  color: var(--color-nav-texto);
+}
+
+.themeList__item:hover,
+.themeList__item:active,
+.themeList__item.active {
+  background-color: var(--borde);
+  color: var(--color-nav-texto);
+}
+
+/* ---- HEADER__nav__menu ------*/
+.nav__menu {
+  /*Es el contenedor del nav desplegable*/
+  width: 13em !important;
+  background-color: var(--color-primario);
+  color: var(--color-nav-texto);
+  transition: 0.5s ease-in-out !important;
+}
+.nav__btn {
+  opacity: 1;
+}
+.menuList__a {
+  color: var(--color-nav-texto);
+}
+
+.menuList__a.active,
+.menuList__a:hover {
+  color: var(--color-nav-link-active) !important;
+}
+
+/* --------------- MAIN --------------- */
+
+/* ---- SECTION: CAROUSEL ------*/
+.carousel {
+  height: var(--carousel-height);
+  background-image: var(--fondo-imagen);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  user-select: none;
+}
+
+.carousel__img {
+  filter: var(--brillo-img-carousel);
+}
+
+/* ---- SECTION: CONTACTANOS ------*/
+.contactanos__h2 {
+  text-align: center;
+}
+
+.contactanos__horarios {
+  width: calc(100% - 2.3em);
+}
+
+.contactanos__i {
+  font-size: 2em;
+  color: var(--borde);
+}
+
+.contactanos__i--modified {
+  font-size: 2.3em;
+}
+
+.contactanos__a {
+  color: var(--color-texto);
+}
+
+.contactanos__a:hover {
+  color: var(--borde);
+  font-weight: 500;
+}
+
+/* ---- SECTION: DEJANOS TU COMENTARIO ------*/
+.dejanos__form {
+  height: 17em;
+}
+
+.form__error {
+  height: 2em;
+  font-size: 0.9em;
+  color: var(--color-msjerror);
+}
+
+.form__textarea {
+  height: 13.1em;
+  color: var(--color-texto);
+  border-color: var(--textarea-borde);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  background-color: var(--relleno);
+  resize: none;
+  caret-color: var(--borde);
+  border-width: 2.5px;
+}
+
+.form__textarea:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem var(--textarea-focus);
+}
+
+.form__input {
+  height: 2.5em;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  color: var(--borde);
+  background: transparent;
+}
+.form__input:hover {
+  background-color: var(--borde);
+  color: var(--fondo);
+  box-shadow: 0 0 5px var(--borde);
+}
+
+/* ---- SECTION: COMENTARIO ------*/
+.comentarios__card {
+  border-color: var(--borde) !important;
+  background-color: var(--relleno);
+  font-size: 0.9em;
+  min-height: 11.3em;
+  border-width: 2.5px !important;
+}
+
+.comentarios__p {
+  text-align: justify;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+
+.comentarios__controllers {
+  margin-top: 0;
+}
+
+.controllers__i {
+  color: var(--arrow);
+  font-size: 2.5em;
+  cursor: pointer;
+  line-height: 1;
+  height: 1em;
+}
+
+.controllers__i:hover {
+  color: var(--color-primario);
+}
+
+/* ---- FOOTER ------*/
+.footer {
+  color: var(--firma-autor);
+}
+.footer__img {
+  width: 1.6em;
+}

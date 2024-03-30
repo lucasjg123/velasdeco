@@ -1,0 +1,91 @@
+/*MEDIAQUERYS HEIGHT NAV Y GRALES*/
+@media screen and (min-height: 700px) {
+  :root {
+    --carousel-height: 76.64dvh;
+  }
+
+  .header {
+    height: 23.36dvh; /*hacer una var*/
+  }
+  .themeList[data-bs-popper] {
+    top: 95%;
+  }
+
+  .comentarios__card {
+    font-size: 0.93em;
+  }
+  .comentarios__controllers {
+    margin-top: 0.5em;
+  }
+}
+
+@media screen and (min-height: 800px) {
+  :root {
+    --carousel-height: 78.64dvh;
+  }
+
+  .header {
+    height: 21.36dvh; /*hacer una var*/
+  }
+  .themeList[data-bs-popper] {
+    top: 99%;
+  }
+  .comentarios__card {
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-height: 900px) {
+  .themeList[data-bs-popper] {
+    top: 107%;
+  }
+}
+
+/*MEDIAQUERYS HEIGHT VISTA DE COMENTARIOS*/
+@media screen and (max-width: 576px) and (min-height: 650px) {
+  .comentarios__card {
+    width: 20em;
+  }
+}
+
+/*MEDIAQUERYS ORIENTACION*/
+@media only screen and (orientation: landscape) and (max-width: 992px) {
+  .header {
+    height: 10.36dvh;
+  }
+
+  .background {
+    display: none;
+  }
+
+  .nav__h2 {
+    display: inline;
+  }
+
+  .nav {
+    height: 100%;
+  }
+
+  :root {
+    --carousel-height: 89.64dvh;
+  }
+
+  /*para solventar el agrandamiento no deseado del nav*/
+  @media screen and (min-height: 460px) {
+    .header {
+      height: 7.36dvh;
+    }
+    :root {
+      --carousel-height: 92.64dvh;
+    }
+  }
+
+  /* para solventar distorsion de carouusel */
+  @media screen and (min-width: 576px) {
+    #carouselExampleAutoplaying {
+      /*COL-5*/
+      flex: 0 0 auto;
+      width: 33.33333333%;
+    }
+  }
+}
