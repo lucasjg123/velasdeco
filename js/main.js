@@ -16,14 +16,12 @@ function pageNextPrev(next) {
   // recibe un bool de param q indica si se presiono prev o next
 
   // Pagina next y pag es < al LIMITE SUPERIOR(cant pag), no estamos en la ult pagina x ende hay una mas
-  if (next) {
-    if (actualPage < pageCount) {
-      actualPage++; // aumento la pag en 1
-      requestComments();
-    }
+  if (next && actualPage < pageCount) {
+    actualPage++; // aumento la pag en 1
+    requestComments();
   }
   // pagina anterior y pag es > 1(LIMITE INFERIOR), no estamos en la 1er pagina x ende hay una previa
-  else if (actualPage > 1) {
+  else if (!next && actualPage > 1) {
     actualPage--; // disminuyo 1 pagina
     requestComments();
   }
@@ -36,9 +34,7 @@ function requestComments() {
   const url = "php/funciones/selectComments.php";
 
   // Objeto donde guardo los datos a enviar a php
-  const data = {
-    page: actualPage,
-  };
+  const data = { page: actualPage };
 
   // Configuracion de la solicitud
   const requestOptions = {
@@ -73,8 +69,7 @@ function updateComments(comments) {
   // LLenamos los div p con los nuevos comentarios
   for (let i = 0; i < commentsCountToShow; i++) {
     e = document.getElementById("comment" + (i + 1));
-
-    comments[i] != null ? (e.innerHTML = comments[i]) : (e.innerHTML = "");
+    e.innerHTML = comments[i] || "";
   }
 }
 

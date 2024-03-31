@@ -4,6 +4,8 @@ function ConexionBD($Host = 'localhost',  $User = 'root',  $Password = '', $Base
 
     //procedo al intento de conexion con esos parametros
     $linkConexion = mysqli_connect($Host, $User, $Password, $BaseDeDatos);
+    
+    // Establecer el juego de caracteres a UTF-8
     mysqli_set_charset($linkConexion, "utf8");
     
     return ($linkConexion) ? $linkConexion : die('No se pudo establecer la conexión.');
