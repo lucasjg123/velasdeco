@@ -71,6 +71,7 @@ mysqli_close($MiConexion);
     <link rel="stylesheet" href="css/theme.css?v=<?php echo(rand()); ?>" />
     <link rel="stylesheet" href="css/style.css?v=<?php echo(rand()); ?>" />
     <link rel="stylesheet" href="css/mediaquerys.css?v=<?php echo(rand()); ?>" />
+    <link rel="icon" type="image/x-icon" href="img/iconos/favicon.ico">
   </head>
   <body>
     <!-- HEADER: Inicio -->
@@ -79,7 +80,7 @@ mysqli_close($MiConexion);
       <div class="background row align-content-center">
         <h1 class="text-center m-0 pt-4">VELAS DECO</h1>
         <p class="background__p text-center m-0">Lorem ipsum dolor sit</p>
-        <img class="background__logo d-none d-lg-block" src="img/logo.jpeg" alt="logo" />
+        <img class="background__logo d-none d-lg-block" src="img/iconos/logo.jpeg" alt="logo" />
       </div>
       <!-- nav -->
       <nav class="nav row navbar p-0">
