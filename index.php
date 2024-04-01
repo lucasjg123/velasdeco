@@ -68,9 +68,9 @@ mysqli_close($MiConexion);
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="css/theme.css?v=<?php echo(rand()); ?>" />
-    <link rel="stylesheet" href="css/style.css?v=<?php echo(rand()); ?>" />
-    <link rel="stylesheet" href="css/mediaquerys.css?v=<?php echo(rand()); ?>" />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/mediaquerys.css" />
     <link rel="icon" type="image/x-icon" href="img/iconos/favicon.ico">
   </head>
   <body>
@@ -79,7 +79,6 @@ mysqli_close($MiConexion);
       <!-- fondo Velas Deco -->
       <div class="background row align-content-center">
         <h1 class="text-center m-0 pt-4">VELAS DECO</h1>
-        <p class="background__p text-center m-0">Lorem ipsum dolor sit</p>
         <img class="background__logo d-none d-lg-block" src="img/iconos/logo.jpeg" alt="logo" />
       </div>
       <!-- nav -->

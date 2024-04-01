@@ -6,9 +6,6 @@ let pageCount;
 function calculatePageCount(commentsCount) {
   // Math.ceil: Si de la div queda un resto, aumenta el cociente en una unidad
   pageCount = Math.ceil(commentsCount / commentsCountToShow);
-
-  console.log("Cantidad de comentarios:", commentsCount);
-  console.log("Cantidad de paginas a mostrar:", pageCount);
 }
 
 // Se activa si el usuario quiere ver comentarios previos o siguentes
@@ -25,8 +22,6 @@ function pageNextPrev(next) {
     actualPage--; // disminuyo 1 pagina
     requestComments();
   }
-
-  console.log("Mostramos la actualPagina:", actualPage);
 }
 
 // realiza la peticion post a selectComments.php para solicitar comentarios
@@ -53,7 +48,6 @@ function requestComments() {
     })
     .then((data) => {
       // Aca recibimos el res.json(). Los datos recibimos en formato legible por JS
-      console.log(data);
       updateComments(data);
     })
     .catch((error) => {
@@ -75,7 +69,6 @@ function updateComments(comments) {
 
 // ----- MAIN -------
 calculatePageCount(commentsCountJS);
-console.log("Cantidad de comentarios desde PHP:", commentsCountJS);
 
 // HUB: objetivo final: mostrar en la pagina los comentarios del array
 
@@ -87,8 +80,3 @@ document.getElementById("prev").addEventListener("click", () => {
 document.getElementById("sig").addEventListener("click", () => {
   pageNextPrev(true);
 });
-
-// del codigo
-// ctrl + k, ctrol + 0 minimizar
-// ctrl + k, ctrl + j expand
-// no se como hacerlo por bloque en el que estoy
