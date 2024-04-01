@@ -79,7 +79,6 @@ mysqli_close($MiConexion);
       <!-- fondo Velas Deco -->
       <div class="background row align-content-center">
         <h1 class="text-center m-0 pt-4">VELAS DECO</h1>
-        <p class="background__p text-center m-0">Lorem ipsum dolor sit</p>
         <img class="background__logo d-none d-lg-block" src="img/iconos/logo.jpeg" alt="logo" />
       </div>
       <!-- nav -->
