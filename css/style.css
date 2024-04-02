@@ -258,8 +258,6 @@ body {
   text-align: justify;
   word-wrap: break-word;
   box-sizing: border-box;
-  position: relative;
-  top: -82px;
 }
 
 .comentarios__controllers {

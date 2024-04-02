@@ -80,18 +80,14 @@ function disablePreloader() {
   const preloaders = document.querySelectorAll(".comentarios__preloader");
   const comments = document.querySelectorAll(".comentarios__p");
 
-  // ocultar preloaders
+  // Ocultar preloaders
   preloaders.forEach((p) => {
-    p.style.transition = "opacity 0.5s ease";
-    p.style.opacity = "0";
+    p.classList.add("d-none");
   });
 
-  // mostrar comentarios
+  // Mostrar comentarios
   comments.forEach((c) => {
-    c.style.transition = "opacity 0.5s ease";
-    setTimeout(() => {
-      c.style.opacity = "1";
-    }, 500); // Esperar 500ms antes de mostrar realmente el comentario
+    c.classList.remove("d-none");
   });
 }
 
@@ -101,12 +97,12 @@ function enablePreloader() {
 
   // ocultar comentarios
   comments.forEach((c) => {
-    c.style.opacity = "0";
+    c.classList.add("d-none");
   });
 
   // mostrar preloaders
   preloaders.forEach((p) => {
-    p.style.opacity = "1";
+    p.classList.remove("d-none");
   });
 }
 
