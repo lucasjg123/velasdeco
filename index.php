@@ -73,7 +73,15 @@ mysqli_close($MiConexion);
     <link rel="stylesheet" href="css/mediaquerys.css?v=<?php echo(rand()); ?>" />
     <link rel="icon" type="image/x-icon" href="img/iconos/favicon.ico">
   </head>
-  <body>
+  <body class="no-scroll">
+    <!-- PRELOADER: Inicio -->
+    <div class="preloader d-flex justify-content-center align-items-center">
+      <div class="preloader__spinner spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <!-- PRELOADER: Fin -->
+
     <!-- HEADER: Inicio -->
     <header class="header container-fluid">
       <!-- fondo Velas Deco -->
@@ -177,6 +185,7 @@ mysqli_close($MiConexion);
         <div
           id="carouselExampleAutoplaying"
           class="col-sm-8 col-md-7 col-lg-5 col-xl-5 col-xxl-4 col-xxxl-3 mx-auto carousel slide p-0 pointer-event"
+          data-bs-ride="carousel"
         >
           <!-- CUANDO LO HAGA .PHP REQUERIR CARRUCEL.PHP -->
           <div class="carousel-inner h-100">
@@ -316,16 +325,17 @@ mysqli_close($MiConexion);
       </p>
     </footer>
     <!-- FOOTER: Fin -->
-    <script src="js/theme.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/theme.js"></script>
     <script>
       let commentsCountJS = <?php echo $commentsCountPHP  ?>;
     </script>
-    <script src="js/main.js"></script>
+    <script src="js/comments.js"></script>
     
   </body>
 </html>
