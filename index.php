@@ -294,16 +294,37 @@ mysqli_close($MiConexion);
           <div
             class="comentarios__card col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
           >
+            <p class="comentarios__preloader placeholder-glow d-none">
+              <span class="placeholder col-7"></span>
+              <span class="placeholder col-4"></span>
+              <span class="placeholder col-4"></span>
+              <span class="placeholder col-6"></span>
+              <span class="placeholder col-8"></span>
+            </p>
             <p class="comentarios__p" id="comment1"><?php if(!empty($Listado[0])) echo $Listado[0]?></p>
           </div>
           <div
             class="comentarios__card col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
           >
+            <p class="comentarios__preloader placeholder-glow d-none">
+              <span class="placeholder col-7"></span>
+              <span class="placeholder col-4"></span>
+              <span class="placeholder col-4"></span>
+              <span class="placeholder col-6"></span>
+              <span class="placeholder col-8"></span>
+            </p>
             <p class="comentarios__p" id="comment2"><?php if(!empty($Listado[1])) echo $Listado[1]?></p>
           </div>
           <div
             class="comentarios__card col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
           >
+            <p class="comentarios__preloader placeholder-glow d-none">
+              <span class="placeholder col-7"></span>
+              <span class="placeholder col-4"></span>
+              <span class="placeholder col-4"></span>
+              <span class="placeholder col-6"></span>
+              <span class="placeholder col-8"></span>
+            </p>
             <p class="comentarios__p" id="comment3"><?php if(!empty($Listado[2])) echo $Listado[2]?></p>
           </div>
         </div>

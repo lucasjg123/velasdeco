@@ -22,6 +22,8 @@
   --fondo-imagen: url(../img/fondos/night1.jpg);
   --brillo-img-carousel: brightness(80%);
   --arrow: var(--firma-autor);
+  --preloader-comments: var(--borde);
+
   --opacidad: 0.9;
 }
 
@@ -39,6 +41,7 @@
   --fondo-imagen: url(../img/fondos/light.jpg);
   --brillo-img-carousel: brightness(100%);
   --arrow: var(--borde);
+  --preloader-comments: var(--borde);
 
   --color-primariov2: #48b99b;
   --opacidad: 1;

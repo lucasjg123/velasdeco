@@ -250,6 +250,10 @@ body {
   border-width: 2.5px !important;
 }
 
+.comentarios__preloader {
+  color: var(--borde);
+}
+
 .comentarios__p {
   text-align: justify;
   word-wrap: break-word;

@@ -18,11 +18,13 @@ function pageNextPrev(next) {
   // Pagina next y pag es < al LIMITE SUPERIOR(cant pag), no estamos en la ult pagina x ende hay una mas
   if (next && actualPage < pageCount) {
     actualPage++; // aumento la pag en 1
+    enablePreloader();
     requestComments();
   }
   // pagina anterior y pag es > 1(LIMITE INFERIOR), no estamos en la 1er pagina x ende hay una previa
   else if (!next && actualPage > 1) {
     actualPage--; // disminuyo 1 pagina
+    enablePreloader();
     requestComments();
   }
 
@@ -34,7 +36,7 @@ function requestComments() {
   const url = "php/funciones/selectComments.php";
 
   // Objeto donde guardo los datos a enviar a php
-  const data = { page: actualPage };
+  const send = { page: actualPage };
 
   // Configuracion de la solicitud
   const requestOptions = {
@@ -42,7 +44,7 @@ function requestComments() {
     header: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(send),
   };
 
   fetch(url, requestOptions) // Aca va la direccion hacia donde haremos la peticion y la config de la solicitud
@@ -55,6 +57,7 @@ function requestComments() {
       // Aca recibimos el res.json(). Los datos recibimos en formato legible por JS
       console.log(data);
       updateComments(data);
+      disablePreloader();
     })
     .catch((error) => {
       //En este bloque catch manejamos el error si es q se produce con "throw new Error"
@@ -73,11 +76,38 @@ function updateComments(comments) {
   }
 }
 
+function disablePreloader() {
+  const preloaders = document.querySelectorAll(".comentarios__preloader");
+  const comments = document.querySelectorAll(".comentarios__p");
+
+  // ocultar preloaders
+  preloaders.forEach((p) => {
+    p.classList.add("d-none");
+  });
+
+  // mostrar comentarios
+  comments.forEach((c) => {
+    c.classList.remove("d-none");
+  });
+}
+
+function enablePreloader() {
+  const preloaders = document.querySelectorAll(".comentarios__preloader");
+  const comments = document.querySelectorAll(".comentarios__p");
+
+  // mostrar preloaders
+  preloaders.forEach((p) => {
+    p.classList.remove("d-none");
+  });
+  // ocultar comentarios
+  comments.forEach((c) => {
+    c.classList.add("d-none");
+  });
+}
+
 // ----- MAIN -------
 calculatePageCount(commentsCountJS);
 console.log("Cantidad de comentarios desde PHP:", commentsCountJS);
-
-// HUB: objetivo final: mostrar en la pagina los comentarios del array
 
 //Evento de click
 document.getElementById("prev").addEventListener("click", () => {
