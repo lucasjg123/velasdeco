@@ -82,12 +82,22 @@ function disablePreloader() {
 
   // Ocultar preloaders
   preloaders.forEach((p) => {
-    p.classList.add("d-none");
+    // Inicio la transicion llevando el elemento a opacitdad 0
+    p.style.opacity = "0";
+
+    // Espero a que termine la transicon 0.5s = 500ms para quitar el display
+    setTimeout(() => {
+      p.classList.add("d-none");
+    }, 500);
   });
 
   // Mostrar comentarios
   comments.forEach((c) => {
-    c.classList.remove("d-none");
+    // Espero a que termine la transicion de desaparicion del preloader para mostrar el comentarioS
+    setTimeout(() => {
+      c.classList.remove("d-none");
+      c.style.opacity = "1";
+    }, 500);
   });
 }
 
@@ -98,10 +108,12 @@ function enablePreloader() {
   // ocultar comentarios
   comments.forEach((c) => {
     c.classList.add("d-none");
+    c.style.opacity = "0";
   });
 
   // mostrar preloaders
   preloaders.forEach((p) => {
+    p.style.opacity = "1";
     p.classList.remove("d-none");
   });
 }
