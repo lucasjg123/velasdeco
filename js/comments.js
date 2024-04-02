@@ -82,12 +82,16 @@ function disablePreloader() {
 
   // ocultar preloaders
   preloaders.forEach((p) => {
-    p.classList.add("d-none");
+    p.style.transition = "opacity 0.5s ease";
+    p.style.opacity = "0";
   });
 
   // mostrar comentarios
   comments.forEach((c) => {
-    c.classList.remove("d-none");
+    c.style.transition = "opacity 0.5s ease";
+    setTimeout(() => {
+      c.style.opacity = "1";
+    }, 500); // Esperar 500ms antes de mostrar realmente el comentario
   });
 }
 
@@ -95,13 +99,14 @@ function enablePreloader() {
   const preloaders = document.querySelectorAll(".comentarios__preloader");
   const comments = document.querySelectorAll(".comentarios__p");
 
-  // mostrar preloaders
-  preloaders.forEach((p) => {
-    p.classList.remove("d-none");
-  });
   // ocultar comentarios
   comments.forEach((c) => {
-    c.classList.add("d-none");
+    c.style.opacity = "0";
+  });
+
+  // mostrar preloaders
+  preloaders.forEach((p) => {
+    p.style.opacity = "1";
   });
 }
 

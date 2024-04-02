@@ -294,7 +294,7 @@ mysqli_close($MiConexion);
           <div
             class="comentarios__card col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
           >
-            <p class="comentarios__preloader placeholder-glow d-none">
+            <p class="comentarios__preloader placeholder-glow" style="opacity: 0;">
               <span class="placeholder col-7"></span>
               <span class="placeholder col-4"></span>
               <span class="placeholder col-4"></span>
@@ -306,7 +306,7 @@ mysqli_close($MiConexion);
           <div
             class="comentarios__card col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
           >
-            <p class="comentarios__preloader placeholder-glow d-none">
+            <p class="comentarios__preloader placeholder-glow" style="opacity: 0;">
               <span class="placeholder col-7"></span>
               <span class="placeholder col-4"></span>
               <span class="placeholder col-4"></span>
@@ -318,7 +318,7 @@ mysqli_close($MiConexion);
           <div
             class="comentarios__card col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
           >
-            <p class="comentarios__preloader placeholder-glow d-none">
+            <p class="comentarios__preloader placeholder-glow" style="opacity: 0;">
               <span class="placeholder col-7"></span>
               <span class="placeholder col-4"></span>
               <span class="placeholder col-4"></span>
