@@ -20,6 +20,27 @@ body {
 }
 
 /* ------------------ PERSONALIZADOS---------------------------*/
+/* --------------- PRELOADER --------------- */
+.no-scroll {
+  overflow-y: hidden;
+}
+
+.preloader {
+  position: fixed;
+  background: var(--bg-spinner);
+  width: 100dvw;
+  height: 100dvh;
+  z-index: 4;
+  overflow-y: hidden; /*en el body*/
+  color: var(--color-spinner);
+}
+
+.preloader__spinner {
+  width: 4em;
+  height: 4em;
+  opacity: 0.9;
+}
+
 /* --------------- HEADER --------------- */
 .header {
   height: 26.36dvh;
@@ -229,10 +250,16 @@ body {
   border-width: 2.5px !important;
 }
 
+.comentarios__preloader {
+  color: var(--borde);
+  transition: opacity 0.5s ease;
+}
+
 .comentarios__p {
   text-align: justify;
   word-wrap: break-word;
   box-sizing: border-box;
+  transition: opacity 0.5s ease;
 }
 
 .comentarios__controllers {

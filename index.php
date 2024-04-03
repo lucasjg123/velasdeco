@@ -4,6 +4,7 @@ require_once 'php/funciones/conexion.php';
 require_once "php/funciones/validarComentario.php";
 require_once "php/funciones/insertarComentario.php";
 require_once "php/funciones/commentsCount.php";
+require_once "php/comments.php";
 session_start();
 // Abrimos conexion a la BD
 $MiConexion = ConexionBD();
@@ -43,12 +44,6 @@ if(!empty($_SESSION["mensaje"])){ // este bloque se ejecuta si el comentario no 
 // Busco la cantidad de comentarios
 $commentsCountPHP = commentsCount($MiConexion);
 
-require_once "php/funciones/selectComments.php";
-$Listado = selectComments($MiConexion);
-
-// Cerrar la conexión
-mysqli_close($MiConexion);
-
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +68,15 @@ mysqli_close($MiConexion);
     <link rel="stylesheet" href="css/mediaquerys.css" />
     <link rel="icon" type="image/x-icon" href="img/iconos/favicon.ico">
   </head>
-  <body>
+  <body class="no-scroll">
+    <!-- PRELOADER: Inicio -->
+    <div class="preloader d-flex justify-content-center align-items-center">
+      <div class="preloader__spinner spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <!-- PRELOADER: Fin -->
+
     <!-- HEADER: Inicio -->
     <header class="header container-fluid">
       <!-- fondo Velas Deco -->
@@ -177,6 +180,7 @@ mysqli_close($MiConexion);
         <div
           id="carouselExampleAutoplaying"
           class="col-sm-8 col-md-7 col-lg-5 col-xl-5 col-xxl-4 col-xxxl-3 mx-auto carousel slide p-0 pointer-event"
+          data-bs-ride="carousel"
         >
           <!-- CUANDO LO HAGA .PHP REQUERIR CARRUCEL.PHP -->
           <div class="carousel-inner h-100">
@@ -282,21 +286,7 @@ mysqli_close($MiConexion);
         <div
           class="row row-cols-1 justify-content-center justify-content-md-evenly mx-auto mt-2"
         >
-          <div
-            class="comentarios__card col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
-          >
-            <p class="comentarios__p" id="comment1"><?php if(!empty($Listado[0])) echo $Listado[0]?></p>
-          </div>
-          <div
-            class="comentarios__card col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
-          >
-            <p class="comentarios__p" id="comment2"><?php if(!empty($Listado[1])) echo $Listado[1]?></p>
-          </div>
-          <div
-            class="comentarios__card col-12 col-sm-8 col-md-7 col-lg-3 px-3 pt-3 border rounded-5 mt-2"
-          >
-            <p class="comentarios__p" id="comment3"><?php if(!empty($Listado[2])) echo $Listado[2]?></p>
-          </div>
+          <?php cargarComentarios($MiConexion); ?>
         </div>
 
         <!-- Flechas cometarios -->
@@ -316,16 +306,22 @@ mysqli_close($MiConexion);
       </p>
     </footer>
     <!-- FOOTER: Fin -->
-    <script src="js/theme.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/theme.js"></script>
     <script>
       let commentsCountJS = <?php echo $commentsCountPHP  ?>;
     </script>
-    <script src="js/main.js"></script>
+    <script src="js/comments.js"></script>
     
   </body>
 </html>
+
+<?php 
+// Cerrar la conexión
+mysqli_close($MiConexion); 
+?>

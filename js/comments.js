@@ -6,6 +6,9 @@ let pageCount;
 function calculatePageCount(commentsCount) {
   // Math.ceil: Si de la div queda un resto, aumenta el cociente en una unidad
   pageCount = Math.ceil(commentsCount / commentsCountToShow);
+
+  //console.log("Cantidad de comentarios:", commentsCount);
+  //console.log("Cantidad de paginas a mostrar:", pageCount);
 }
 
 // Se activa si el usuario quiere ver comentarios previos o siguentes
@@ -15,13 +18,17 @@ function pageNextPrev(next) {
   // Pagina next y pag es < al LIMITE SUPERIOR(cant pag), no estamos en la ult pagina x ende hay una mas
   if (next && actualPage < pageCount) {
     actualPage++; // aumento la pag en 1
+    enablePreloader();
     requestComments();
   }
   // pagina anterior y pag es > 1(LIMITE INFERIOR), no estamos en la 1er pagina x ende hay una previa
   else if (!next && actualPage > 1) {
     actualPage--; // disminuyo 1 pagina
+    enablePreloader();
     requestComments();
   }
+
+  //console.log("Mostramos la actualPagina:", actualPage);
 }
 
 // realiza la peticion post a selectComments.php para solicitar comentarios
@@ -29,7 +36,7 @@ function requestComments() {
   const url = "php/funciones/selectComments.php";
 
   // Objeto donde guardo los datos a enviar a php
-  const data = { page: actualPage };
+  const send = { page: actualPage };
 
   // Configuracion de la solicitud
   const requestOptions = {
@@ -37,7 +44,7 @@ function requestComments() {
     header: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(send),
   };
 
   fetch(url, requestOptions) // Aca va la direccion hacia donde haremos la peticion y la config de la solicitud
@@ -48,7 +55,9 @@ function requestComments() {
     })
     .then((data) => {
       // Aca recibimos el res.json(). Los datos recibimos en formato legible por JS
+      //console.log(data);
       updateComments(data);
+      disablePreloader();
     })
     .catch((error) => {
       //En este bloque catch manejamos el error si es q se produce con "throw new Error"
@@ -67,10 +76,51 @@ function updateComments(comments) {
   }
 }
 
+function disablePreloader() {
+  const preloaders = document.querySelectorAll(".comentarios__preloader");
+  const comments = document.querySelectorAll(".comentarios__p");
+
+  // Ocultar preloaders
+  preloaders.forEach((p) => {
+    // Inicio la transicion llevando el elemento a opacitdad 0
+    p.style.opacity = "0";
+
+    // Espero a que termine la transicon 0.5s = 500ms para quitar el display
+    setTimeout(() => {
+      p.classList.add("d-none");
+    }, 500);
+  });
+
+  // Mostrar comentarios
+  comments.forEach((c) => {
+    // Espero a que termine la transicion de desaparicion del preloader para mostrar el comentarioS
+    setTimeout(() => {
+      c.classList.remove("d-none");
+      c.style.opacity = "1";
+    }, 500);
+  });
+}
+
+function enablePreloader() {
+  const preloaders = document.querySelectorAll(".comentarios__preloader");
+  const comments = document.querySelectorAll(".comentarios__p");
+
+  // ocultar comentarios
+  comments.forEach((c) => {
+    c.classList.add("d-none");
+    c.style.opacity = "0";
+  });
+
+  // mostrar preloaders
+  preloaders.forEach((p) => {
+    p.style.opacity = "1";
+    p.classList.remove("d-none");
+  });
+}
+
 // ----- MAIN -------
 calculatePageCount(commentsCountJS);
-
-// HUB: objetivo final: mostrar en la pagina los comentarios del array
+//console.log("Cantidad de comentarios desde PHP:", commentsCountJS);
 
 //Evento de click
 document.getElementById("prev").addEventListener("click", () => {
@@ -80,3 +130,8 @@ document.getElementById("prev").addEventListener("click", () => {
 document.getElementById("sig").addEventListener("click", () => {
   pageNextPrev(true);
 });
+
+// del codigo
+// ctrl + k, ctrol + 0 minimizar
+// ctrl + k, ctrl + j expand
+// no se como hacerlo por bloque en el que estoy
